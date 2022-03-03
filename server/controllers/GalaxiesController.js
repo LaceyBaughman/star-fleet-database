@@ -14,10 +14,10 @@ export class GalaxiesController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const galaxy = await galaxiesService.getAll(req.query)
-      return res.send
+      const galaxies = await galaxiesService.getAll(req.query)
+      return res.send(galaxies)
     } catch (error) {
-
+      next(error)
     }
   }
 
@@ -25,7 +25,7 @@ export class GalaxiesController extends BaseController {
     try {
       req.body.creatorId = req.userInfo.id
       const galaxy = await galaxiesService.create(req.body)
-      return res.send.galaxy
+      res.send(galaxy)
     } catch (error) {
       next(error)
     }

@@ -3,8 +3,8 @@ import { BadRequest } from '../utils/Errors'
 
 class GalaxiesService {
   async getAll(query = {}) {
-    const values = await dbContext.Galaxies.find(query)
-    return values
+    const galaxies = await dbContext.Galaxies.find(query)
+    return galaxies
   }
 
   async create(body) {
